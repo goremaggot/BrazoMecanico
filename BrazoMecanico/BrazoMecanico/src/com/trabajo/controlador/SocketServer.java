@@ -63,6 +63,7 @@ public class SocketServer extends Thread {
                         case 2 : j2.setValue(rotacion); break;
                         case 3 : j3.setValue(rotacion); break;
                     }
+                    System.out.println(server.getInetAddress().toString() + server.getLocalPort());
                     if (brazo == 4){
                         if(rotacion==0){
                         area1.controller.ctrPin=true;

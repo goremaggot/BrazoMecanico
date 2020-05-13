@@ -1,7 +1,10 @@
 package com.trabajo.presentacion;
 
+import com.trabajo.controlador.Cliente;
 import com.trabajo.controlador.SocketServer;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -9,8 +12,15 @@ import java.io.IOException;
  */
 public class VistaServer extends javax.swing.JFrame {
 
- private boolean ctrPin = true;
+    private boolean ctrPin = true;
     private SocketServer serverInit = null;
+    private boolean ispressed1 = true;
+    private boolean ispressed2 = true;
+    private boolean ispressed3 = true;
+    /**
+     * Creates new form Vistacliente
+     */
+    private Cliente cli;
 
     public VistaServer() throws IOException {
 
@@ -64,6 +74,14 @@ public class VistaServer extends javax.swing.JFrame {
                 jSlider1StateChanged(evt);
             }
         });
+        jSlider1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jSlider1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jSlider1MouseExited(evt);
+            }
+        });
         jPanel1.add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
         jSlider2.setMaximum(90);
@@ -76,6 +94,14 @@ public class VistaServer extends javax.swing.JFrame {
                 jSlider2StateChanged(evt);
             }
         });
+        jSlider2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jSlider2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jSlider2MouseExited(evt);
+            }
+        });
         jPanel1.add(jSlider2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
         jSlider3.setMaximum(90);
@@ -84,6 +110,14 @@ public class VistaServer extends javax.swing.JFrame {
         jSlider3.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSlider3StateChanged(evt);
+            }
+        });
+        jSlider3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jSlider3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jSlider3MouseExited(evt);
             }
         });
         jPanel1.add(jSlider3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, -1, -1));
@@ -111,19 +145,50 @@ public class VistaServer extends javax.swing.JFrame {
 
         area1.controller.ctrBrazo = 1;
         area1.controller.EnviarRotacion(jSlider1.getValue());
+
         area1.rep();
+        if (!ispressed1) {
+         try {
+         cli = new Cliente();
+         cli.startClient(); 
+         cli.enviaMensaje(1, jSlider1.getValue());
+         cli.close();
+         } catch (IOException ex) {
+          Logger.getLogger(VistaServer.class.getName()).log(Level.SEVERE, null, ex);
+         }
+                         }
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
         area1.controller.ctrBrazo = 2;
         area1.controller.EnviarRotacion(jSlider2.getValue());
         area1.rep();
+        if (!ispressed2) {
+         try {
+         cli = new Cliente();
+         cli.startClient(); 
+         cli.enviaMensaje(2, jSlider2.getValue());
+         cli.close();
+         } catch (IOException ex) {
+          Logger.getLogger(VistaServer.class.getName()).log(Level.SEVERE, null, ex);
+         }
+                         }
     }//GEN-LAST:event_jSlider2StateChanged
 
     private void jSlider3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider3StateChanged
         area1.controller.ctrBrazo = 3;
         area1.controller.EnviarRotacion(jSlider3.getValue());
         area1.rep();
+        if (!ispressed3) {
+         try {
+         cli = new Cliente();
+         cli.startClient(); 
+         cli.enviaMensaje(3, jSlider3.getValue());
+         cli.close();
+         } catch (IOException ex) {
+          Logger.getLogger(VistaServer.class.getName()).log(Level.SEVERE, null, ex);
+         }
+                         }
     }//GEN-LAST:event_jSlider3StateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -134,10 +199,56 @@ public class VistaServer extends javax.swing.JFrame {
             ctrPin=true;
         }
         area1.controller.ctrPin = ctrPin;      
-        area1.controller.ctrBrazo = 4;       
+        area1.controller.ctrBrazo = 4; 
         area1.rep();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jSlider1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseEntered
+        setIspressed1(false);
+    }//GEN-LAST:event_jSlider1MouseEntered
+
+    private void jSlider1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseExited
+        setIspressed1(true);
+    }//GEN-LAST:event_jSlider1MouseExited
+
+    private void jSlider2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider2MouseEntered
+       setIspressed2(false);
+    }//GEN-LAST:event_jSlider2MouseEntered
+
+    private void jSlider2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider2MouseExited
+        setIspressed2(true);
+    }//GEN-LAST:event_jSlider2MouseExited
+
+    private void jSlider3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider3MouseEntered
+        setIspressed3(false);
+    }//GEN-LAST:event_jSlider3MouseEntered
+
+    private void jSlider3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider3MouseExited
+        setIspressed3(true);
+    }//GEN-LAST:event_jSlider3MouseExited
+    public boolean isIspressed1() {
+        return ispressed1;
+    }
+
+    public void setIspressed1(boolean ispressed1) {
+        this.ispressed1 = ispressed1;
+    }
+
+    public boolean isIspressed2() {
+        return ispressed2;
+    }
+
+    public void setIspressed2(boolean ispressed2) {
+        this.ispressed2 = ispressed2;
+    }
+
+    public boolean isIspressed3() {
+        return ispressed3;
+    }
+
+    public void setIspressed3(boolean ispressed3) {
+        this.ispressed3 = ispressed3;
+    }
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.trabajo.presentacion.Area area1;

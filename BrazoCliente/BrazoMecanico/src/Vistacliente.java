@@ -14,11 +14,21 @@ public class Vistacliente extends javax.swing.JFrame {
      */
     private Cliente cli;
     private boolean ctrPin = true;
+    private boolean ispressed1 = true;
+    private boolean ispressed2 = true;
+    private boolean ispressed3 = true;
+
+
+    private SocketServer serverInit = null;
     /**
      *
+     * @throws java.io.IOException
      */
-    public Vistacliente() {
+    public Vistacliente() throws IOException{
         initComponents();
+        serverInit = new SocketServer();
+        serverInit.mueveBrazo(jSlider1,jSlider2 , jSlider3);
+        serverInit.start();
     }
 
     /**
@@ -45,6 +55,14 @@ public class Vistacliente extends javax.swing.JFrame {
                 jSlider3StateChanged(evt);
             }
         });
+        jSlider3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jSlider3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jSlider3MouseExited(evt);
+            }
+        });
 
         jSlider1.setMaximum(90);
         jSlider1.setMinimum(-90);
@@ -54,6 +72,23 @@ public class Vistacliente extends javax.swing.JFrame {
                 jSlider1StateChanged(evt);
             }
         });
+        jSlider1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSlider1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jSlider1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jSlider1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jSlider1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jSlider1MouseReleased(evt);
+            }
+        });
 
         jSlider2.setMaximum(90);
         jSlider2.setMinimum(-90);
@@ -61,6 +96,14 @@ public class Vistacliente extends javax.swing.JFrame {
         jSlider2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSlider2StateChanged(evt);
+            }
+        });
+        jSlider2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jSlider2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jSlider2MouseExited(evt);
             }
         });
 
@@ -106,7 +149,10 @@ public class Vistacliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        try {
+        
+        if (!ispressed1) {
+            System.out.println("Esta Entrando");
+            try {
         cli = new Cliente();
         cli.startClient(); 
             cli.enviaMensaje(1, jSlider1.getValue());
@@ -114,9 +160,14 @@ public class Vistacliente extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Vistacliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
+        }    
+        
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
+        
+        if (!ispressed2) {
         try {
         cli = new Cliente();
         cli.startClient(); 
@@ -124,11 +175,14 @@ public class Vistacliente extends javax.swing.JFrame {
             cli.close();
         } catch (IOException ex) {
             Logger.getLogger(Vistacliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }                 
+                          }
     }//GEN-LAST:event_jSlider2StateChanged
 
     private void jSlider3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider3StateChanged
-                try {
+                
+        if (!ispressed3) {
+        try {
         cli = new Cliente();
         cli.startClient(); 
             cli.enviaMensaje(3, jSlider3.getValue());
@@ -136,6 +190,7 @@ public class Vistacliente extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Vistacliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+                          }
     }//GEN-LAST:event_jSlider3StateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -160,6 +215,42 @@ public class Vistacliente extends javax.swing.JFrame {
             Logger.getLogger(Vistacliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jSlider1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MousePressed
+        
+    }//GEN-LAST:event_jSlider1MousePressed
+
+    private void jSlider1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseReleased
+        
+    }//GEN-LAST:event_jSlider1MouseReleased
+
+    private void jSlider1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseClicked
+        
+    }//GEN-LAST:event_jSlider1MouseClicked
+
+    private void jSlider1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseEntered
+        setIspressed1(false);
+    }//GEN-LAST:event_jSlider1MouseEntered
+
+    private void jSlider1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseExited
+        setIspressed1(true);
+    }//GEN-LAST:event_jSlider1MouseExited
+
+    private void jSlider2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider2MouseEntered
+        setIspressed2(false);
+    }//GEN-LAST:event_jSlider2MouseEntered
+
+    private void jSlider2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider2MouseExited
+        setIspressed2(true);
+    }//GEN-LAST:event_jSlider2MouseExited
+
+    private void jSlider3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider3MouseEntered
+        setIspressed3(false);
+    }//GEN-LAST:event_jSlider3MouseEntered
+
+    private void jSlider3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider3MouseExited
+        setIspressed3(true);
+    }//GEN-LAST:event_jSlider3MouseExited
 
     /**
      * @param args the command line arguments
@@ -190,10 +281,36 @@ public class Vistacliente extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Vistacliente().setVisible(true);
+            try {
+                new Vistacliente().setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(Vistacliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
+    public boolean isIspressed1() {
+        return ispressed1;
+    }
 
+    public void setIspressed1(boolean ispressed1) {
+        this.ispressed1 = ispressed1;
+    }
+
+    public boolean isIspressed2() {
+        return ispressed2;
+    }
+
+    public void setIspressed2(boolean ispressed2) {
+        this.ispressed2 = ispressed2;
+    }
+
+    public boolean isIspressed3() {
+        return ispressed3;
+    }
+
+    public void setIspressed3(boolean ispressed3) {
+        this.ispressed3 = ispressed3;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JSlider jSlider1;
