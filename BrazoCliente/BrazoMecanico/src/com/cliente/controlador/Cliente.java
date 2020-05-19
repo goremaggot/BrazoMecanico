@@ -1,3 +1,5 @@
+package com.cliente.controlador;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +11,7 @@
  *
  * @author Ricardo
  */
+import com.cliente.modelo.Conexion;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;

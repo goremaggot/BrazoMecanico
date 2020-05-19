@@ -1,4 +1,4 @@
-package com.trabajo.controlador;
+package com.trabajo.modelo;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

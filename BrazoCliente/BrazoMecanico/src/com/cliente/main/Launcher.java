@@ -1,4 +1,7 @@
+package com.cliente.main;
 
+
+import com.cliente.presentacion.VistaCliente;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

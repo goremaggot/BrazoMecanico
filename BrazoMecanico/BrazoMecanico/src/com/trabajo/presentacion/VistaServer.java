@@ -1,7 +1,7 @@
 package com.trabajo.presentacion;
 
 import com.trabajo.controlador.Cliente;
-import com.trabajo.controlador.SocketServer;
+import com.trabajo.modelo.SocketServer;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

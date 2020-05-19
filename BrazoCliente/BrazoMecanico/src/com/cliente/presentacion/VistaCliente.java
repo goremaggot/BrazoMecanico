@@ -1,4 +1,8 @@
+package com.cliente.presentacion;
 
+
+import com.cliente.controlador.Cliente;
+import com.cliente.modelo.SocketServer;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -4,6 +4,7 @@ package com.trabajo.controlador;
  *
  * @author Ricardo
  */
+import com.trabajo.modelo.Conexion;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
