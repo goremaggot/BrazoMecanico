@@ -148,15 +148,15 @@ public class VistaServer extends javax.swing.JFrame {
 
         area1.rep();
         if (!ispressed1) {
-         try {
-         cli = new Cliente();
-         cli.startClient(); 
-         cli.enviaMensaje(1, jSlider1.getValue());
-         cli.close();
-         } catch (IOException ex) {
-          Logger.getLogger(VistaServer.class.getName()).log(Level.SEVERE, null, ex);
-         }
-                         }
+                try {
+                cli = new Cliente();
+                cli.startClient(); 
+                cli.enviaMensaje(1, jSlider1.getValue());
+                cli.close();
+            } catch (IOException ex) {
+                Logger.getLogger(VistaServer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
@@ -164,15 +164,15 @@ public class VistaServer extends javax.swing.JFrame {
         area1.controller.EnviarRotacion(jSlider2.getValue());
         area1.rep();
         if (!ispressed2) {
-         try {
-         cli = new Cliente();
-         cli.startClient(); 
-         cli.enviaMensaje(2, jSlider2.getValue());
-         cli.close();
-         } catch (IOException ex) {
-          Logger.getLogger(VistaServer.class.getName()).log(Level.SEVERE, null, ex);
-         }
-                         }
+            try {
+                cli = new Cliente();
+                cli.startClient(); 
+                cli.enviaMensaje(2, jSlider2.getValue());
+                cli.close();
+            } catch (IOException ex) {
+                Logger.getLogger(VistaServer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jSlider2StateChanged
 
     private void jSlider3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider3StateChanged
@@ -180,15 +180,15 @@ public class VistaServer extends javax.swing.JFrame {
         area1.controller.EnviarRotacion(jSlider3.getValue());
         area1.rep();
         if (!ispressed3) {
-         try {
-         cli = new Cliente();
-         cli.startClient(); 
-         cli.enviaMensaje(3, jSlider3.getValue());
-         cli.close();
-         } catch (IOException ex) {
-          Logger.getLogger(VistaServer.class.getName()).log(Level.SEVERE, null, ex);
-         }
-                         }
+            try {
+                cli = new Cliente();
+                cli.startClient(); 
+                cli.enviaMensaje(3, jSlider3.getValue());
+                cli.close();
+            } catch (IOException ex) {
+                Logger.getLogger(VistaServer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jSlider3StateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

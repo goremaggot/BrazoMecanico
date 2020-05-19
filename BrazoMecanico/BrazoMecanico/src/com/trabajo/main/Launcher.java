@@ -10,8 +10,6 @@ import java.util.logging.Logger;
  * @author Ricardo
  */
 public class Launcher {
-
-
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> {
             VistaServer v = null;
@@ -23,6 +21,5 @@ public class Launcher {
             v.setVisible(true);
             v.setSize(870,450);
         });
-    }
-    
+    } 
 }

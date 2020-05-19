@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author GIOVY
+ * @author Ricardo
  */
 public class SocketServer extends Thread {
 

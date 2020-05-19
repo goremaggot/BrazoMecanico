@@ -7,7 +7,7 @@
 
 /**
  *
- * @author Goremaggot
+ * @author Ricardo
  */
 import java.io.DataOutputStream;
 import java.io.IOException;
